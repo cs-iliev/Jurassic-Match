@@ -53,6 +53,12 @@ jobs:
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
+
+      - uses: MirageNet/nunit-reporter@v1.1.0
+        if: always()
+        with:
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
+          access-token: ${{ secrets.GITHUB_TOKEN }}
   buildWebGL:
     needs: testRunner
     name: Build for WebGL 🖥️
