@@ -57,7 +57,7 @@ jobs:
       - uses: MirageNet/nunit-reporter@v1.1.0
         if: always()
         with:
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
+          path: ${{ steps.testRunner.outputs.artifactsPath }}/*.xml
           access-token: ${{ secrets.GITHUB_TOKEN }}
   buildWebGL:
     needs: testRunner
